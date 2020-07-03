@@ -2,8 +2,9 @@ const shared = {
   fonts: {
     heading: `Obviously Wide`,
     jumbo: `Obviously Wide Bold`,
+    skinny: `Obviously-NarwBold`,
     body: `Covik Sans`,
-    accent: `Vulf Mono`,
+    accent: `Vulf Mono Demo`,
   },
 }
 
@@ -16,7 +17,8 @@ export const light = {
 
   fonts: {
     heading: shared.fonts.heading,
-    jumbo: `Obviously Wide Bold`,
+    jumbo: shared.fonts.jumbo,
+    skinny: shared.fonts.skinny,
     body: shared.fonts.body,
     accent: shared.fonts.accent,
   },

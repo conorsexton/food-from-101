@@ -18,9 +18,22 @@ export const H1 = styled.h1`
   font-size: 1.75em;
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 400;
+  margin-bottom: 3em;
 `
+
+export const H2 = styled.h2`
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.skinny};
+  font-size: 1.25em;
+`
+
 export const InfoHeader = styled.h2`
-  color: ${({ theme }) => theme.colors.accent};
+  display: inline;
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fonts.accent};
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
 `
 
 export const Paragraph = styled.p`

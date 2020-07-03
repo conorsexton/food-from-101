@@ -2,23 +2,40 @@ import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { MDXRenderer as Markdown } from "gatsby-plugin-mdx"
+import { normalizeQuantity } from "../helpers"
 import Layout from "../components/layout"
 import { Ingredient } from "../components/ingredient"
-import { H1, Paragraph } from "../components/shared"
+import { H1, H2, Paragraph, InfoHeader } from "../components/shared"
 
-const Description = styled(Paragraph)`
-  color: ${({ theme }) => theme.colors.accent};
+const Yield = ({ yields }) => {
+  return (
+    <>
+      <InfoHeader>Serves</InfoHeader>
+      <Paragraph>{yields}</Paragraph>
+    </>
+  )
+}
+
+const Time = ({ time }) => {
+  return (
+    <>
+      <InfoHeader>Time</InfoHeader>
+      <Paragraph>{time}</Paragraph>
+    </>
+  )
+}
+
+const IngredientsList = styled.ol`
+  list-style: none;
+  margin-left: 0;
 `
-
-const Yield = ({ yield }) => {}
 
 const Recipe = ({ data }) => {
   const ingredientItems = data.airtable.data.Ingredients.map(ingredient => {
     const { Quantity, Unit, Name, Note } = ingredient.data
-    const normalizedQuantity = Quantity === 0.5 ? "½" : Quantity
     return (
       <Ingredient
-        quantity={normalizedQuantity}
+        quantity={normalizeQuantity(Quantity)}
         unit={Unit}
         name={Name}
         note={Note}
@@ -28,13 +45,13 @@ const Recipe = ({ data }) => {
   return (
     <Layout>
       <H1>{data.airtable.data.Name}</H1>
-      <Description>
+      <Yield yields={data.airtable.data.Yield} />
+      <Time time={data.airtable.data.Time} />
+      <Paragraph>
         <Markdown>{data.airtable.data.Description.childMdx.body}</Markdown>
-      </Description>
-      <div>Yield: {data.airtable.data.Yield} slices</div>
-      <div>Time: {data.airtable.data.Time}</div>
-      <h2>Ingredients</h2>
-      <ol>{ingredientItems}</ol>
+      </Paragraph>
+      <H2>Ingredients</H2>
+      <IngredientsList>{ingredientItems}</IngredientsList>
     </Layout>
   )
 }
