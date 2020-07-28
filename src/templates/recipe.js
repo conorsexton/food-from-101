@@ -57,14 +57,14 @@ const Prep = styled.section`
       color: ${({ theme }) => theme.colors.darkAccent};
       content: counter(list);
       display: inline-block;
-      line-height: 1.25em;
+      line-height: 1.125rem;
       margin-right: 1em;
       height: 20px;
       width: 20px;
       font-variant-numeric: tabular-nums;
       font-size: 0.875em;
       font-weight: 600;
-      text-indent: 5px;
+      text-indent: 6px;
     }
   }
 `
