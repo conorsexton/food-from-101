@@ -19,4 +19,8 @@ export const UNITS = {
     one: "pound",
     other: "lbs.",
   },
+  dash: {
+    one: "dash",
+    other: "dashes",
+  },
 }
