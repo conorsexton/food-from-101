@@ -18,7 +18,7 @@ export const H1 = styled.h1`
   font-size: 1.75em;
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 400;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 `
 
 export const H2 = styled.h2`
@@ -28,6 +28,7 @@ export const H2 = styled.h2`
 `
 
 export const InfoHeader = styled.h2`
+  color: ${({ theme }) => theme.colors.text};
   display: inline;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.accent};
@@ -37,6 +38,7 @@ export const InfoHeader = styled.h2`
 `
 
 export const Paragraph = styled.p`
+  color: ${({ theme }) => theme.colors.text};
   line-height: 1.25;
   font-family: ${({ theme }) => theme.fonts.body};
 `
