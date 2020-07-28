@@ -90,7 +90,9 @@ const Recipe = ({ data }) => {
   return (
     <>
       <Header />
-      <Hero src={data.airtable.data.Photo[0].url} />
+      {data?.airtable?.data?.Photo && (
+        <Hero src={data.airtable.data.Photo[0].url} />
+      )}
       <Layout>
         <H1>{data.airtable.data.Name}</H1>
         <Yield yields={data.airtable.data.Yield} />
