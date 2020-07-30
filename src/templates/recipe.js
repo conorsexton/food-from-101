@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 import { MDXRenderer as Markdown } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
+import Header from "../components/header"
 import { normalizeQuantity, normalizeUnit } from "../helpers"
 import { Ingredient } from "../components/ingredient"
 import { H1, H2, Paragraph, InfoHeader } from "../components/shared"
@@ -29,12 +30,6 @@ const Hero = styled.div`
   background: url(${props => props.src}) center;
   background-size: cover;
   height: 24em;
-`
-
-const Header = styled.header`
-  position: fixed;
-  height: 70px;
-  width: 100%;
 `
 
 const Prep = styled.section`

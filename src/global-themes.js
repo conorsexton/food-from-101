@@ -1,19 +1,19 @@
 const shared = {
   fonts: {
-    heading: `Obviously Wide`,
-    jumbo: `Obviously Wide Bold`,
-    skinny: `Obviously-NarwBold`,
-    body: `Covik Sans`,
+    heading: `obviously-wide`,
+    jumbo: `obviously-wide`,
+    skinny: `obviously-narrow`,
+    body: `covik-sans`,
     accent: `Vulf Mono Demo`,
   },
 }
 
 export const light = {
   colors: {
-    background: "var(--porcelain)",
-    embedded: "var(--sage)",
     accent: "var(--ripe-tomato)",
+    background: "var(--porcelain)",
     darkAccent: "var(--kale)",
+    embedded: "var(--sage)",
     text: "var(--aubergine)",
   },
 
@@ -28,10 +28,10 @@ export const light = {
 
 export const dark = {
   colors: {
+    accent: "var(--sherbert)",
     background: "var(--squid-ink)",
-    embedded: "var(--spearmint)",
-    accent: "var(--spearmint)",
     darkAccent: "var(--squid-ink)",
+    embedded: "var(--spearmint)",
     text: "var(--parchment)",
   },
 

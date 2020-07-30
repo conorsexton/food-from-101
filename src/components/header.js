@@ -1,42 +1,67 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import styled from "styled-components"
 import React from "react"
+import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const HeaderBase = styled.header`
+  background: var(--porcelain-translucent);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5rem;
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+  @media (prefers-color-scheme: dark) {
+    background: var(--squid-ink-translucent);
+    backdrop-filter: blur(10px);
+  }
+`
 
-Header.defaultProps = {
-  siteTitle: ``,
+const Logo = styled(Link)`
+  color: var(--sage);
+  display: flex;
+  flex-direction: column;
+  max-width: 36em;
+  margin: 1.25em auto;
+  padding: 0 2rem;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  span:first-of-type {
+    font-family: "obviously-narrow";
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    line-height: 0.875;
+    text-transform: uppercase;
+  }
+
+  span:last-of-type {
+    font-family: "obviously-extended";
+    font-size: 185%;
+    line-height: 1;
+  }
+
+  &:hover {
+    color: var(--aubergine);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--spearmint);
+
+    &:hover {
+      color: var(--parchment);
+    }
+  }
+`
+
+const Header = () => {
+  return (
+    <HeaderBase>
+      <Logo aria-label="Site logo">
+        <span>Food From</span>
+        <span>101</span>
+      </Logo>
+    </HeaderBase>
+  )
 }
 
 export default Header

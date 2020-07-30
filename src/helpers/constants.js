@@ -7,6 +7,10 @@ export const UNITS = {
     one: "cup",
     other: "cups",
   },
+  dash: {
+    one: "dash",
+    other: "dashes",
+  },
   leaf: {
     one: "leaf",
     other: "leaves",
@@ -19,8 +23,24 @@ export const UNITS = {
     one: "pound",
     other: "lbs.",
   },
-  dash: {
-    one: "dash",
-    other: "dashes",
+  slice: {
+    one: "slice",
+    other: "slices",
+  },
+  sliver: {
+    one: "sliver",
+    other: "slivers",
+  },
+  sprig: {
+    one: "sprig",
+    other: "sprigs",
+  },
+  tablespoon: {
+    one: "tablespoon",
+    other: "tablespoons",
+  },
+  teaspoon: {
+    one: "teaspoon",
+    other: "teaspoons",
   },
 }

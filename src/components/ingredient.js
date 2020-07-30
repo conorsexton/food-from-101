@@ -6,10 +6,13 @@ const Item = styled.li`
   margin-bottom: 0.5em;
 `
 
+const capitalizeFirstLetter = string =>
+  string[0].toUpperCase() + string.slice(1)
+
 export const Ingredient = ({ quantity, unit, name, note }) => {
   return (
-    <Item>{`${quantity || ""} ${unit} ${name}${
-      (note && `, ${note}`) || ""
-    }`}</Item>
+    <Item>{`${quantity || ""} ${unit} ${
+      quantity ? name : capitalizeFirstLetter(name)
+    }${(note && `, ${note}`) || ""}`}</Item>
   )
 }
