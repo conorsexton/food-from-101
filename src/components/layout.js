@@ -51,16 +51,19 @@ const shortcodes = { Lead }
 
 const Layout = ({ children }) => {
   const [prefersDarkTheme, setPrefersDarkTheme] = React.useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    (typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches) ||
+      false
   )
 
-  window.matchMedia("(prefers-color-scheme: dark)").addListener(event => {
-    if (event.matches) {
-      setPrefersDarkTheme(true)
-    } else {
-      setPrefersDarkTheme(false)
-    }
-  })
+  typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(event => {
+      if (event.matches) {
+        setPrefersDarkTheme(true)
+      } else {
+        setPrefersDarkTheme(false)
+      }
+    })
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
