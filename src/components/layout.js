@@ -72,6 +72,10 @@ const NavLink = styled(Link)`
     ::after {
       color: var(--aubergine);
       transform: translateX(4px);
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--sage);
+      }
     }
   }
 `
