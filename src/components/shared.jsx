@@ -7,6 +7,7 @@ export const Lead = styled.header`
   font-size: 2.25em;
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: 400;
+  margin-bottom: 2em;
 
   strong {
     font-family: ${({ theme }) => theme.fonts.jumbo};

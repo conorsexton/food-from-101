@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import "./layout.css"
 import { light, dark } from "../global-themes"
 import * as GlobalElements from "../components/shared"
-import Header from "../components/header"
 
 const Global = createGlobalStyle`
   :root {
@@ -42,15 +41,46 @@ const Global = createGlobalStyle`
 
 const Main = styled.main`
   max-width: 36em;
-  margin: 6em auto;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 6em 2rem;
+`
+
+const NavLink = styled(Link)`
+  color: var(--aubergine);
+  display: block;
+  font-family: "Vulf Mono", monospace;
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 1em;
+  text-decoration: none;
+  transition: letter-spacing 0.2s ease-in-out;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--sage);
+  }
+
+  ::after {
+    content: "→";
+    color: ${({ theme }) => theme.colors.background};
+    display: inline-block;
+    margin-left: 0.5em;
+    transition: color 0.2s ease-in-out, transform 0.25s ease-in-out;
+  }
+
+  &:hover {
+    letter-spacing: 0.05em;
+    ::after {
+      color: var(--aubergine);
+      transform: translateX(4px);
+    }
+  }
 `
 
 const { Lead } = GlobalElements
-const shortcodes = { Lead }
+const shortcodes = { Lead, NavLink }
 
 const Layout = ({ children }) => {
-  const [prefersDarkTheme, setPrefersDarkTheme] = React.useState(
+  const [prefersDarkTheme, setPrefersDarkTheme] = useState(
     (typeof window !== "undefined" &&
       window.matchMedia("(prefers-color-scheme: dark)").matches) ||
       false
