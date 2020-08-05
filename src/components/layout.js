@@ -6,6 +6,8 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import "./layout.css"
 import { light, dark } from "../global-themes"
 import * as GlobalElements from "../components/shared"
+import Header from "../components/header"
+import { RecipeList } from "../components/recipe-list"
 
 const Global = createGlobalStyle`
   :root {
@@ -17,12 +19,12 @@ const Global = createGlobalStyle`
     --sage: hsla(185, 22%, 78%, 1);
     --kale: hsla(171, 52%, 20%, 1);
 
-    /* Dark Theme Colros */
+    /* Dark Theme Colors */
     --squid-ink: hsla(159, 33%, 7%, 1);
-    --squid-ink-translucent: hsla(159, 33%, 7%, 0.95);
+    --squid-ink-translucent: hsla(159, 33%, 7%, 0.9);
     --spearmint: hsla(171, 33%, 40%, 1);
     --vodka-sauce: hsla(11, 91%, 61%, 1);
-    --sherbert: hsla(23, 85%, 63%, 1);
+    --sherbert: hsla(23, 100%, 57%, 1);
     --parchment: hsla(30, 15%, 70%, 1);
   }
 
@@ -80,8 +82,17 @@ const NavLink = styled(Link)`
   }
 `
 
-const { Lead } = GlobalElements
-const shortcodes = { Lead, NavLink }
+export const RecipeLink = styled(NavLink)`
+  transition: text-decoration-color 0.2s ease-in-out;
+  text-decoration: ${({ theme }) => theme.colors.background} underline;
+  &:hover {
+    text-decoration-color: ${({ theme }) => theme.colors.accent};
+    letter-spacing: initial;
+  }
+`
+
+const { Lead, H2 } = GlobalElements
+const shortcodes = { Lead, NavLink, RecipeLink, Header, RecipeList }
 
 const Layout = ({ children }) => {
   const [prefersDarkTheme, setPrefersDarkTheme] = useState(
@@ -112,7 +123,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={prefersDarkTheme ? dark : light}>
       <Global />
-      <MDXProvider components={{ ...shortcodes }}>
+      <MDXProvider components={{ ...shortcodes, h2: H2 }}>
         <Main>{children}</Main>
       </MDXProvider>
     </ThemeProvider>

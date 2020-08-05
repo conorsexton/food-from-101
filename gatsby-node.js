@@ -8,7 +8,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     slug = `/${node.data.Name.replace(/ /g, "-")
       .replace(/[,&]/g, "")
       .toLowerCase()}/`
-    // Add slug as a field on the node.
     createNodeField({ node, name: `slug`, value: slug })
   }
 }

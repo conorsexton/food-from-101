@@ -12,7 +12,7 @@ const HeaderBase = styled.header`
 
   @media (prefers-color-scheme: dark) {
     background: var(--squid-ink-translucent);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
   }
 `
 
@@ -48,7 +48,7 @@ const Logo = styled(Link)`
     color: var(--spearmint);
 
     &:hover {
-      color: var(--parchment);
+      color: var(--sage);
     }
   }
 `

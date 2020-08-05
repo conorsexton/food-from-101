@@ -32,7 +32,7 @@ export const dark = {
     background: "var(--squid-ink)",
     darkAccent: "var(--squid-ink)",
     embedded: "var(--spearmint)",
-    text: "var(--parchment)",
+    text: "var(--sage)",
   },
 
   fonts: {
