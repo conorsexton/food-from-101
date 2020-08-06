@@ -43,12 +43,15 @@ exports.createPages = ({ graphql, actions }) => {
 
         reject(result)
       }
-      result.data.allAirtable.edges.forEach(edge => {
+      const recipes = result.data.allAirtable.edges
+      recipes.forEach(({ node }, index) => {
         createPage({
-          path: edge.node.fields.slug,
+          path: node.fields.slug,
           component: atRecipes,
           context: {
-            name: edge.node.data.Name,
+            name: node.data.Name,
+            prev: index === 0 ? null : recipes[index - 1].node,
+            next: index === recipes.length - 1 ? null : recipes[index + 1].node,
           },
         })
       })

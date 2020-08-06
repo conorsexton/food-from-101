@@ -1,7 +1,7 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { RecipeLink } from "./layout"
-// import styled from "styled-components"
+import styled from "styled-components"
+import { graphql, useStaticQuery } from "gatsby"
+import { RecipeLink } from "./shared"
 
 export const RecipeList = () => {
   const data = useStaticQuery(graphql`
@@ -25,6 +25,11 @@ export const RecipeList = () => {
     }
   `)
 
+  const List = styled.ul`
+    list-style: none;
+    margin-left: 0;
+  `
+
   const recipeLinks = data.allAirtable.edges.map((recipe, i) => {
     const {
       data: { Name },
@@ -37,5 +42,5 @@ export const RecipeList = () => {
     )
   })
 
-  return <ul>{recipeLinks}</ul>
+  return <List>{recipeLinks}</List>
 }

@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Header from "../components/header"
 import { normalizeQuantity, normalizeUnit } from "../helpers"
 import { Ingredient } from "../components/ingredient"
-import { H1, H2, Paragraph, InfoHeader } from "../components/shared"
+import { H1, H2, Paragraph, InfoHeader, NavLink } from "../components/shared"
 
 const Yield = ({ yields }) => {
   return (
@@ -70,7 +70,8 @@ const IngredientsList = styled.ol`
   margin-left: 0;
 `
 
-const Recipe = ({ data }) => {
+const Recipe = ({ data, pageContext }) => {
+  console.log(pageContext)
   const ingredientItems = data.airtable.data.Ingredients.map(ingredient => {
     const { Quantity, Unit, Name, Note } = ingredient.data
     return (
@@ -101,6 +102,11 @@ const Recipe = ({ data }) => {
         <Prep>
           <Markdown>{data.airtable.data.Preparation.childMdx.body}</Markdown>
         </Prep>
+        {pageContext.next && (
+          <NavLink to={pageContext.next.fields.slug}>
+            {pageContext.next.data.Name}
+          </NavLink>
+        )}
       </Layout>
     </>
   )
