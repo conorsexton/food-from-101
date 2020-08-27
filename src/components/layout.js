@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import "./layout.css"
 import { light, dark } from "../global-themes"
 import * as GlobalElements from "../components/shared"
 import Header from "../components/header"
+import { RecipeList } from "../components/recipe-list"
 
 const Global = createGlobalStyle`
   :root {
@@ -18,12 +19,12 @@ const Global = createGlobalStyle`
     --sage: hsla(185, 22%, 78%, 1);
     --kale: hsla(171, 52%, 20%, 1);
 
-    /* Dark Theme Colros */
+    /* Dark Theme Colors */
     --squid-ink: hsla(159, 33%, 7%, 1);
-    --squid-ink-translucent: hsla(159, 33%, 7%, 0.95);
+    --squid-ink-translucent: hsla(159, 33%, 7%, 0.9);
     --spearmint: hsla(171, 33%, 40%, 1);
     --vodka-sauce: hsla(11, 91%, 61%, 1);
-    --sherbert: hsla(23, 85%, 63%, 1);
+    --sherbert: hsla(23, 100%, 57%, 1);
     --parchment: hsla(30, 15%, 70%, 1);
   }
 
@@ -42,15 +43,15 @@ const Global = createGlobalStyle`
 
 const Main = styled.main`
   max-width: 36em;
-  margin: 6em auto;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 6em 2rem;
 `
 
-const { Lead } = GlobalElements
-const shortcodes = { Lead }
+const { Lead, WideHeader, NavLink, RecipeLink } = GlobalElements
+const shortcodes = { Lead, NavLink, RecipeLink, Header, RecipeList }
 
 const Layout = ({ children }) => {
-  const [prefersDarkTheme, setPrefersDarkTheme] = React.useState(
+  const [prefersDarkTheme, setPrefersDarkTheme] = useState(
     (typeof window !== "undefined" &&
       window.matchMedia("(prefers-color-scheme: dark)").matches) ||
       false
@@ -78,7 +79,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={prefersDarkTheme ? dark : light}>
       <Global />
-      <MDXProvider components={{ ...shortcodes }}>
+      <MDXProvider components={{ ...shortcodes, h2: WideHeader }}>
         <Main>{children}</Main>
       </MDXProvider>
     </ThemeProvider>

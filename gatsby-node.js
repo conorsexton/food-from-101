@@ -8,7 +8,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     slug = `/${node.data.Name.replace(/ /g, "-")
       .replace(/[,&]/g, "")
       .toLowerCase()}/`
-    // Add slug as a field on the node.
     createNodeField({ node, name: `slug`, value: slug })
   }
 }
@@ -44,12 +43,15 @@ exports.createPages = ({ graphql, actions }) => {
 
         reject(result)
       }
-      result.data.allAirtable.edges.forEach(edge => {
+      const recipes = result.data.allAirtable.edges
+      recipes.forEach(({ node }, index) => {
         createPage({
-          path: edge.node.fields.slug,
+          path: node.fields.slug,
           component: atRecipes,
           context: {
-            name: edge.node.data.Name,
+            name: node.data.Name,
+            prev: index === 0 ? null : recipes[index - 1].node,
+            next: index === recipes.length - 1 ? null : recipes[index + 1].node,
           },
         })
       })
