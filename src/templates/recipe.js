@@ -7,6 +7,7 @@ import Header from "../components/header"
 import { normalizeQuantity, normalizeUnit } from "../helpers"
 import { Ingredient } from "../components/ingredient"
 import { H1, H2, Paragraph, InfoHeader, NavLink } from "../components/shared"
+import { ATTRIBUTION_LEVELS } from "../helpers/constants"
 
 const Yield = ({ yields }) => {
   return (
@@ -23,6 +24,58 @@ const Time = ({ time }) => {
       <InfoHeader>Time</InfoHeader>
       <Paragraph>{time}</Paragraph>
     </>
+  )
+}
+
+const FooterBase = styled.footer`
+  border-top: 1px solid ${({ theme }) => theme.colors.embedded};
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  padding-top: 0.25em;
+`
+
+const Links = styled.section`
+  display: flex;
+  flex-direction: column;
+`
+
+const Attribution = styled.p`
+  color: ${({ theme }) => theme.colors.darkAccent};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 0.875em;
+  font-weight: bold;
+  line-height: 1.125;
+  margin-top: 0.5em;
+  opacity: 0.5;
+  text-transform: uppercase;
+`
+
+const normalizeAttributionLevel = level => {
+  if (!level) return null
+  return level.toUpperCase() === ATTRIBUTION_LEVELS.INSPIRED
+    ? "inspired by"
+    : "adapted from"
+}
+
+const RecipeFooter = ({ source, attributionLevel, nextRecipe }) => {
+  const { name, slug } = nextRecipe
+  const attributionText = normalizeAttributionLevel(attributionLevel)
+
+  return (
+    <FooterBase>
+      {source && attributionLevel && (
+        <Attribution>
+          Recipe {attributionText} {source}
+        </Attribution>
+      )}
+      <Links>
+        <NavLink to="/recipes" direction="left">
+          All recipes
+        </NavLink>
+        {nextRecipe && <NavLink to={slug}>{name}</NavLink>}
+      </Links>
+    </FooterBase>
   )
 }
 
@@ -44,7 +97,8 @@ const Prep = styled.section`
 
   li {
     counter-increment: list;
-    margin-left: 2em;
+    line-height: 1.25;
+    margin: 0 0 1em 2em;
     text-indent: -2em;
     ::before {
       background-color: ${({ theme }) => theme.colors.embedded};
@@ -59,7 +113,12 @@ const Prep = styled.section`
       font-variant-numeric: tabular-nums;
       font-size: 0.875em;
       font-weight: 600;
-      text-indent: 6px;
+      text-indent: 5px;
+    }
+    @media only screen and (max-width: 480px) {
+      & {
+        font-size: 1.125em;
+      }
     }
   }
 `
@@ -71,7 +130,9 @@ const IngredientsList = styled.ol`
 `
 
 const Recipe = ({ data, pageContext }) => {
-  console.log(pageContext)
+  const nextRecipe = pageContext?.next
+    ? { slug: pageContext.next.fields.slug, name: pageContext.next.data.Name }
+    : null
   const ingredientItems = data.airtable.data.Ingredients.map(ingredient => {
     const { Quantity, Unit, Name, Note } = ingredient.data
     return (
@@ -80,6 +141,7 @@ const Recipe = ({ data, pageContext }) => {
         unit={normalizeUnit(Unit, Quantity)}
         name={Name}
         note={Note}
+        key={ingredient.recordId}
       />
     )
   })
@@ -102,11 +164,11 @@ const Recipe = ({ data, pageContext }) => {
         <Prep>
           <Markdown>{data.airtable.data.Preparation.childMdx.body}</Markdown>
         </Prep>
-        {pageContext.next && (
-          <NavLink to={pageContext.next.fields.slug}>
-            {pageContext.next.data.Name}
-          </NavLink>
-        )}
+        <RecipeFooter
+          source={data.airtable.data.Source}
+          attributionLevel={data.airtable.data.Source_Level}
+          nextRecipe={nextRecipe}
+        />
       </Layout>
     </>
   )
@@ -136,6 +198,7 @@ export const recipeQuery = graphql`
           }
         }
         Ingredients {
+          recordId
           data {
             Quantity
             Unit
@@ -143,6 +206,8 @@ export const recipeQuery = graphql`
             Note
           }
         }
+        Source
+        Source_Level
       }
     }
   }

@@ -44,3 +44,8 @@ export const UNITS = {
     other: "teaspoons",
   },
 }
+
+export const ATTRIBUTION_LEVELS = {
+  ADAPTED: "ADAPTED",
+  INSPIRED: "INSPIRED",
+}

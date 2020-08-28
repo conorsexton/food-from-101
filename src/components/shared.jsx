@@ -51,9 +51,10 @@ export const InfoHeader = styled.h2`
   font-weight: 300;
 `
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.section`
   color: ${({ theme }) => theme.colors.text};
   line-height: 1.25;
+  margin-bottom: 1em;
   font-family: ${({ theme }) => theme.fonts.body};
 `
 export const NavLink = styled(Link)`
@@ -63,6 +64,7 @@ export const NavLink = styled(Link)`
   font-style: italic;
   font-weight: 400;
   margin-top: 1em;
+  ${props => props.direction === "left" && `margin-left: -1em;`}
   text-decoration: none;
   transition: letter-spacing 0.2s ease-in-out;
 
@@ -70,20 +72,33 @@ export const NavLink = styled(Link)`
     color: var(--sage);
   }
 
-  ::after {
-    content: "→";
-    color: ${({ theme }) => theme.colors.background};
-    display: inline-block;
-    margin-left: 0.5em;
-    transition: color 0.2s ease-in-out, transform 0.25s ease-in-out;
-  }
+  ${props =>
+    props.direction === "left"
+      ? `::before {
+          content: "←";
+          color: ${props.theme.colors.background};
+          display: inline-block;
+          margin-right: 0.5em;
+          transition: color 0.2s ease-in-out, transform 0.25s ease-in-out;
+        }`
+      : `::after {
+          content: "→";
+          color: ${props.theme.colors.background};
+          display: inline-block;
+          margin-left: 0.5em;
+          transition: color 0.2s ease-in-out, transform 0.25s ease-in-out;
+        }`}
 
   &:hover {
     letter-spacing: 0.05em;
     ::after {
       color: var(--aubergine);
       transform: translateX(4px);
-
+    }
+    ::before {
+      color: var(--aubergine);
+      transform: translateX(-4px);
+    }
       @media (prefers-color-scheme: dark) {
         color: var(--sage);
       }

@@ -56,7 +56,7 @@ const Logo = styled(Link)`
 const Header = () => {
   return (
     <HeaderBase>
-      <Logo aria-label="Site logo">
+      <Logo aria-label="Site logo" to="/">
         <span>Food From</span>
         <span>101</span>
       </Logo>
