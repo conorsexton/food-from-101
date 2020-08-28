@@ -31,10 +31,9 @@ export const H2 = styled.h2`
 export const WideHeader = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: 1.125em;
+  font-size: 1.5em;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  margin-bottom: 2em;
 
   @media (prefers-color-scheme: dark) {
     color: ${({ theme }) => theme.colors.accent};
