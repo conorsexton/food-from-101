@@ -59,9 +59,7 @@ const normalizeAttributionLevel = level => {
 }
 
 const RecipeFooter = ({ source, attributionLevel, nextRecipe }) => {
-  const { name, slug } = nextRecipe
   const attributionText = normalizeAttributionLevel(attributionLevel)
-
   return (
     <FooterBase>
       {source && attributionLevel && (
@@ -73,7 +71,9 @@ const RecipeFooter = ({ source, attributionLevel, nextRecipe }) => {
         <NavLink to="/recipes" direction="left">
           All recipes
         </NavLink>
-        {nextRecipe && <NavLink to={slug}>{name}</NavLink>}
+        {nextRecipe && (
+          <NavLink to={nextRecipe.slug}>{nextRecipe.name}</NavLink>
+        )}
       </Links>
     </FooterBase>
   )
