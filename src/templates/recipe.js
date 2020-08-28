@@ -31,7 +31,7 @@ const FooterBase = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.colors.embedded};
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2em;
+  margin-top: 3.5em;
   padding-top: 0.25em;
 `
 
@@ -49,6 +49,11 @@ const Attribution = styled.p`
   margin-top: 0.5em;
   opacity: 0.5;
   text-transform: uppercase;
+
+  @media (prefers-color-scheme: dark) {
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 0.8;
+  }
 `
 
 const normalizeAttributionLevel = level => {
@@ -64,7 +69,7 @@ const RecipeFooter = ({ source, attributionLevel, nextRecipe }) => {
     <FooterBase>
       {source && attributionLevel && (
         <Attribution>
-          Recipe {attributionText} {source}
+          *Recipe {attributionText} {source}
         </Attribution>
       )}
       <Links>
