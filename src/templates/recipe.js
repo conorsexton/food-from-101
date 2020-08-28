@@ -12,7 +12,7 @@ import { ATTRIBUTION_LEVELS } from "../helpers/constants"
 const Yield = ({ yields }) => {
   return (
     <>
-      <InfoHeader>Serves</InfoHeader>
+      <InfoHeader>Makes</InfoHeader>
       <Paragraph>{yields}</Paragraph>
     </>
   )
@@ -21,7 +21,7 @@ const Yield = ({ yields }) => {
 const Time = ({ time }) => {
   return (
     <>
-      <InfoHeader>Time</InfoHeader>
+      <InfoHeader>Takes</InfoHeader>
       <Paragraph>{time}</Paragraph>
     </>
   )
@@ -152,9 +152,13 @@ const Recipe = ({ data, pageContext }) => {
         <Hero src={data.airtable.data.Photo[0].url} />
       )}
       <Layout>
-        <H1>{data.airtable.data.Name}</H1>
-        <Yield yields={data.airtable.data.Yield} />
-        <Time time={data.airtable.data.Time} />
+        <header>
+          <H1>{data.airtable.data.Name}</H1>
+          <section>
+            <Yield yields={data.airtable.data.Yield} />
+            <Time time={data.airtable.data.Time} />
+          </section>
+        </header>
         <Paragraph>
           <Markdown>{data.airtable.data.Description.childMdx.body}</Markdown>
         </Paragraph>
