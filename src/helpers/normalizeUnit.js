@@ -9,8 +9,9 @@ export const normalizeUnit = (unit, quantity = "1") => {
       : quantity
     return parseFloat(maxAmount)
   }
+  const parsedQuantity = parseQuantity(quantity)
   const pluralRule = new Intl.PluralRules("en-US").select(
-    parseQuantity(quantity)
+    parsedQuantity < 1 ? 1 : parsedQuantity
   )
   return (UNITS[unit] && UNITS[unit][pluralRule]) || unit
 }
