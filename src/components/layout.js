@@ -10,6 +10,14 @@ import Header from "../components/header"
 import { RecipeList } from "../components/recipe-list"
 
 const Global = createGlobalStyle`
+  @font-face {
+    font-family: "Vulf Mono";
+    src: url("https://cs-vulf-mono.s3.us-east-2.amazonaws.com/Vulf_Mono-Italic_web.woff2") format('woff2'),
+         url("https://cs-vulf-mono.s3.us-east-2.amazonaws.com/Vulf_Mono-Italic_web.woff") format('woff'),
+         url("https://cs-vulf-mono.s3.us-east-2.amazonaws.com/Vulf_Mono-Italic_web.ttf") format('ttf');
+    font-weight: 400;
+    font-style: italic;
+  }
   :root {
     /* Light Theme Colors */
     --porcelain: hsla(185, 100%, 95%, 1);

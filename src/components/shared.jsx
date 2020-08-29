@@ -59,7 +59,7 @@ export const Paragraph = styled.section`
 export const NavLink = styled(Link)`
   color: var(--aubergine);
   display: block;
-  font-family: "Vulf Mono", monospace;
+  font-family: ${({ theme }) => theme.fonts.accent};
   font-style: italic;
   font-weight: 400;
   margin-top: 1em;

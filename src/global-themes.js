@@ -1,10 +1,10 @@
 const shared = {
   fonts: {
-    heading: `obviously-wide`,
-    jumbo: `obviously-wide`,
-    skinny: `obviously-narrow`,
-    body: `covik-sans`,
-    accent: `Vulf Mono Demo`,
+    heading: `obviously-wide, "Arial Black", Verdana, sans-serif`,
+    jumbo: `obviously-wide, "Arial Black", Verdana, sans-serif`,
+    skinny: `obviously-narrow, "Arial Narrow", sans-serif`,
+    body: `covik-sans, Tahoma, sans-serif`,
+    accent: `"Vulf Mono", monospace`,
   },
 }
 

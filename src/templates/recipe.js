@@ -102,6 +102,7 @@ const Prep = styled.section`
 
   li {
     counter-increment: list;
+    font-feature-settings: "frac";
     line-height: 1.25;
     margin: 0 0 1em 2em;
     text-indent: -2em;

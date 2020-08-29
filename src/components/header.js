@@ -27,7 +27,7 @@ const Logo = styled(Link)`
   transition: color 0.2s ease-in-out;
 
   span:first-of-type {
-    font-family: "obviously-narrow";
+    font-family: "obviously-narrow", "Arial Narrow", sans-serif;
     font-weight: 700;
     letter-spacing: 0.6px;
     line-height: 0.875;
@@ -35,7 +35,7 @@ const Logo = styled(Link)`
   }
 
   span:last-of-type {
-    font-family: "obviously-extended";
+    font-family: "obviously-extended", "Arial Black", Verdana, sans-serif;
     font-size: 185%;
     line-height: 1;
   }
