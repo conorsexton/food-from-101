@@ -30,6 +30,7 @@ const Time = ({ time }) => {
 const FooterBase = styled.footer`
   border-top: 1px solid ${({ theme }) => theme.colors.embedded};
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin-top: 3.5em;
   padding-top: 0.25em;

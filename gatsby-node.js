@@ -21,7 +21,10 @@ exports.createPages = ({ graphql, actions }) => {
 
     graphql(`
       {
-        allAirtable(filter: { table: { eq: "Recipes" } }) {
+        allAirtable(
+          sort: { fields: data___ID, order: DESC }
+          filter: { table: { eq: "Recipes" } }
+        ) {
           edges {
             node {
               id

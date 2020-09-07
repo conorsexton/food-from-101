@@ -1,4 +1,8 @@
 export const UNITS = {
+  can: {
+    one: "can",
+    other: "cans",
+  },
   clove: {
     one: "clove",
     other: "cloves",
@@ -11,6 +15,10 @@ export const UNITS = {
     one: "dash",
     other: "dashes",
   },
+  gram: {
+    one: "gram",
+    other: "grams",
+  },
   leaf: {
     one: "leaf",
     other: "leaves",
@@ -18,6 +26,10 @@ export const UNITS = {
   ounce: {
     one: "ounce",
     other: "ounces",
+  },
+  packet: {
+    one: "packet",
+    other: "packets",
   },
   pound: {
     one: "pound",
