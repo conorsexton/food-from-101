@@ -95,6 +95,10 @@ const Prep = styled.section`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.body};
 
+  a {
+    color: ${({ theme }) => theme.colors.text};
+  }
+
   ol {
     counter-reset: list;
     list-style: none;
@@ -141,13 +145,14 @@ const Recipe = ({ data, pageContext }) => {
     ? { slug: pageContext.next.fields.slug, name: pageContext.next.data.Name }
     : null
   const ingredientItems = data.airtable.data.Ingredients.map(ingredient => {
-    const { Quantity, Unit, Name, Note } = ingredient.data
+    const { Quantity, Unit, Name, Note, Link } = ingredient.data
     return (
       <Ingredient
         quantity={normalizeQuantity(Quantity)}
         unit={normalizeUnit(Unit, Quantity)}
         name={Name}
         note={Note}
+        link={Link}
         key={ingredient.recordId}
       />
     )
@@ -215,6 +220,7 @@ export const recipeQuery = graphql`
             Unit
             Name
             Note
+            Link
           }
         }
         Source
