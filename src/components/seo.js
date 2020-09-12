@@ -26,10 +26,11 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  debugger
   const image =
     metaImage && metaImage.url
       ? metaImage.url
-      : imageSharp?.original?.src || null
+      : `${site.siteMetadata.siteUrl}${imageSharp?.original?.src}` || null
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
