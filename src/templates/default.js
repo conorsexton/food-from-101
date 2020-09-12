@@ -9,6 +9,7 @@ const DefaultTemplate = ({
     frontmatter: { title },
   },
 }) => {
+  debugger
   return (
     <>
       <SEO title={title} />

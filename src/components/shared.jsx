@@ -26,6 +26,8 @@ export const H2 = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.skinny};
   font-size: 1.25em;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
 `
 
 export const WideHeader = styled.h2`

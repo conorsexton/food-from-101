@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { MDXProvider } from "@mdx-js/react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import "./layout.css"
 import { light, dark } from "../global-themes"
 import * as GlobalElements from "../components/shared"
@@ -55,8 +55,23 @@ const Main = styled.main`
   padding: 6em 2rem;
 `
 
-const { Lead, WideHeader, NavLink, RecipeLink, Paragraph, H1 } = GlobalElements
-const shortcodes = { Lead, NavLink, RecipeLink, Header, RecipeList }
+const {
+  Lead,
+  WideHeader,
+  H2: SkinnyHeader,
+  NavLink,
+  RecipeLink,
+  Paragraph,
+  H1,
+} = GlobalElements
+const shortcodes = {
+  Lead,
+  NavLink,
+  RecipeLink,
+  Header,
+  RecipeList,
+  SkinnyHeader,
+}
 
 const Layout = ({ children }) => {
   const [prefersDarkTheme, setPrefersDarkTheme] = useState(
@@ -73,16 +88,6 @@ const Layout = ({ children }) => {
         setPrefersDarkTheme(false)
       }
     })
-
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
 
   return (
     <ThemeProvider theme={prefersDarkTheme ? dark : light}>

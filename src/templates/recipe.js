@@ -158,6 +158,7 @@ const Recipe = ({ data, pageContext }) => {
       />
     )
   })
+  debugger
   return (
     <>
       <SEO
@@ -169,6 +170,7 @@ const Recipe = ({ data, pageContext }) => {
             height: 800,
           }
         }
+        description={data?.airtable?.data?.Description?.childMdx?.excerpt}
       />
       <Header />
       {data?.airtable?.data?.Photo && (
@@ -212,6 +214,7 @@ export const recipeQuery = graphql`
           childMdx {
             body
             rawBody
+            excerpt
           }
         }
         Photo {
