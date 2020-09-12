@@ -26,7 +26,6 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  debugger
   const image =
     metaImage && metaImage.url
       ? metaImage.url

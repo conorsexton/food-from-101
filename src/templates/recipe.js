@@ -158,7 +158,6 @@ const Recipe = ({ data, pageContext }) => {
       />
     )
   })
-  debugger
   return (
     <>
       <SEO
