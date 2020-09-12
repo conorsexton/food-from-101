@@ -55,7 +55,7 @@ const Main = styled.main`
   padding: 6em 2rem;
 `
 
-const { Lead, WideHeader, NavLink, RecipeLink } = GlobalElements
+const { Lead, WideHeader, NavLink, RecipeLink, Paragraph, H1 } = GlobalElements
 const shortcodes = { Lead, NavLink, RecipeLink, Header, RecipeList }
 
 const Layout = ({ children }) => {
@@ -87,7 +87,9 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={prefersDarkTheme ? dark : light}>
       <Global />
-      <MDXProvider components={{ ...shortcodes, h2: WideHeader }}>
+      <MDXProvider
+        components={{ ...shortcodes, h1: H1, h2: WideHeader, p: Paragraph }}
+      >
         <Main>{children}</Main>
       </MDXProvider>
     </ThemeProvider>

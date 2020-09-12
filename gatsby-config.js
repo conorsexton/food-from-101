@@ -4,9 +4,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Food From 101`,
+    description: `A slapdash collection of remixed recipes, cooking techniques, and a few baking miracles.`,
+    keywords: ["cooking", "food", "recipes"],
+    author: `Conor Sexton & Nolan Henningson`,
+    siteUrl: `https://foodfrom101.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -55,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `food-from-101`,
+        short_name: `food-from-101`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
