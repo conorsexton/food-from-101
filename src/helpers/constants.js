@@ -31,6 +31,10 @@ export const UNITS = {
     one: "packet",
     other: "packets",
   },
+  "Pinch of": {
+    one: "pinch of",
+    other: "pinches of"
+  },
   pound: {
     one: "pound",
     other: "lbs.",
